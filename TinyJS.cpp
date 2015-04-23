@@ -2383,6 +2383,7 @@ CScriptVar::~CScriptVar(void) {
 bool CScriptVar::isObject()		{return false;}
 bool CScriptVar::isError()			{return false;}
 bool CScriptVar::isArray()			{return false;}
+bool CScriptVar::isDate()			{return false;}
 bool CScriptVar::isRegExp()		{return false;}
 bool CScriptVar::isAccessor()		{return false;}
 bool CScriptVar::isNull()			{return false;}
@@ -4355,6 +4356,7 @@ CScriptVarLinkWorkPtr CScriptVarScopeWith::findInScopes(const string &childName)
 extern "C" void _registerFunctions(CTinyJS *tinyJS);
 extern "C" void _registerStringFunctions(CTinyJS *tinyJS);
 extern "C" void _registerMathFunctions(CTinyJS *tinyJS);
+extern "C" void _registerDateFunctions(CTinyJS *tinyJS);
 
 CTinyJS::CTinyJS() {
 	CScriptVarPtr var;
@@ -4508,6 +4510,7 @@ CTinyJS::CTinyJS() {
 	functionPrototype->addChild("toString", objectPrototype_toString, SCRIPTVARLINK_BUILDINDEFAULT);
 	pseudo_refered.push_back(&functionPrototype);
 
+
 	//////////////////////////////////////////////////////////////////////////
 	// Error
 	var = addNative("function Error(message, fileName, lineNumber, column)", this, &CTinyJS::native_Error, 0, SCRIPTVARLINK_CONSTANT); 
@@ -4583,6 +4586,7 @@ CTinyJS::CTinyJS() {
 	_registerFunctions(this);
 	_registerStringFunctions(this);
 	_registerMathFunctions(this);
+	_registerDateFunctions(this);
 }
 
 CTinyJS::~CTinyJS() {

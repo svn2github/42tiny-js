@@ -54,7 +54,7 @@
 #endif
 #define _CRT_SECURE_NO_WARNINGS
 
-#ifdef WIN32
+#ifdef _WIN32
 #include <process.h>
 #endif
 
@@ -226,7 +226,7 @@ public:
  	~end()
 	{
 		if(active) {
-#ifdef WIN32
+#ifdef _WIN32
 			system("pause");
 #else
 			printf("press Enter (end)");
