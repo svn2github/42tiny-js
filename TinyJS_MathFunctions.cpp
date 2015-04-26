@@ -119,13 +119,13 @@ static void scMathRound(const CFunctionsScopePtr &c, void *userdata) {
 	RETURN(a.round());
 }
 
-//Math.ceil(a) - returns nearest integer to Infinity
+//Math.ceil(a) - returns nearest round of given value
 static void scMathCeil(const CFunctionsScopePtr &c, void *userdata) {
 	PARAMETER_TO_NUMBER(a,"a"); RETURN_NAN_IS_NAN(a); RETURN_INFINITY_IS_INFINITY(a);
 	RETURN(a.ceil());
 }
 
-//Math.floor(a) - returns nearest integer to -Infinity
+//Math.floor(a) - returns nearest round of given value
 static void scMathFloor(const CFunctionsScopePtr &c, void *userdata) {
 	PARAMETER_TO_NUMBER(a,"a"); 
 	RETURN(a.floor());
